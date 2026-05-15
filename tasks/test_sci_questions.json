@@ -1,0 +1,7 @@
+[
+    {
+        "task_id": "nRC",
+        "task": "Explore the target hierarchical dataset folder and produce a comprehensive metadata description.",
+        "input_path": "/data/nRC"
+    }
+]

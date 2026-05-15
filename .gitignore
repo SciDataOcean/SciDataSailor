@@ -1,0 +1,24 @@
+# Logs
+logs/
+*.log
+
+# Python cache
+.vscode/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# Outputs
+output/
+data/
+*_output/
+trash/
+pipeline_output_v2/
+history/
+
+# Optional: local runtime artifacts
+pipeline_v2*.sh
+pipeline.sh
+ref/
+*.jsonl

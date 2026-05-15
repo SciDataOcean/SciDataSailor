@@ -1,0 +1,67 @@
+{
+  "model_name": "<MODEL_NAME>",
+  "api_key": "<API_KEY>",
+  "base_url": "<BASE_URL>",
+  "conda_path": "<CONDA_PATH>",
+  "conda_env": "<CONDA_ENV>",
+  "dataset_path": "<DATASET_PATH>",
+  "min_depth": 1,
+  "max_selected_traj": 3,
+  "path_similarity_threshold": 0.7,
+  "sampler_mode": "tooltree_mcts",
+  "mcts_rollouts": 3,
+  "mcts_branching": 3,
+  "mcts_lambda": 1,
+  "mcts_tau_pre": 0.25,
+  "mcts_tau_post": 0.35,
+  "mcts_num_candidates": 6,
+  "mcts_max_depth": 15,
+  "mcts_judge_temperature": 0.2,
+  "mcts_fpu_reduction": 0.1,
+  "mcts_depth_bonus": 0.12,
+  "mcts_visit_decay": "sqrt",
+  "mcts_dynamic_branching": true,
+  "mcts_entropy_temperature": 0.2,
+  "mcts_min_branching": 1,
+  "mcts_hierarchical_actions": true,
+  "mcts_strategy_diversity": true,
+  "sandbox_timeout": 300,
+  "available_tools": [
+    "python_interpreter"
+  ],
+  "seed_description": "Scientific dataset folder to explore and analyze",
+  "sampling_tips": [
+    "Start by listing the top-level directory structure with os.listdir() or os.walk().",
+    "Identify file types and sizes to understand the dataset composition.",
+    "For tabular files (csv, tsv, json, jsonl, parquet), inspect schema, column names, dtypes, and row counts.",
+    "For nested directories, recursively explore to understand the hierarchy.",
+    "Sample actual data contents -- read a few rows from key files to understand the data semantics.",
+    "Look for README, metadata, or manifest files that describe the dataset.",
+    "Compute basic statistics (min, max, mean, missing values) on numeric columns.",
+    "Cross-reference data across multiple files when relationships exist."
+  ],
+  "synthesis_tips": [
+    "Generate multi-hop questions that require the agent to navigate the dataset directory hierarchy, locate specific files, and extract or compute answers from file contents.",
+    "The generated questions MUST require the agent to run multi-turn reasoning to anwser, rather than answer the question in one turn.",
+    "Questions must be grounded in actual data discovered during exploration -- do not ask about data that was not observed.",
+    "At least 1 question should require cross-referencing information from multiple files or directories.",
+    "At least 1 question should require computing a derived value (aggregation, comparison, or statistical measure) from the data.",
+    "Avoid questions answerable from filenames alone -- require reading actual file contents.",
+    "Answers must be concrete: a number, a name, a file path, or a short factual phrase.",
+    "Ensure answers are formatted strictly as requested: numeric results rounded to 2 decimal places where appropriate."
+  ],
+  "qa_examples": [
+    {
+      "question": "What is the percentage point difference in data sparsity between the cortical layer with the highest sparsity and the one with the lowest sparsity in the results.h5ad expression matrix?",
+      "answer": "5.1%"
+    },
+    {
+      "question": "Across the modalities represented in the dataset, which one combines a quantitative expression matrix, categorical cell-type labels, and batch metadata, and how many unique label categories does it contain?",
+      "answer": "scRNA-seq, 14 categories"
+    },
+    {
+      "question": "What percentage of barcodes listed in `positions.txt` are also present in both `sample_data.h5ad` and the truth annotation file, rounded to two decimal places?",
+      "answer": "69.31%"
+    }
+  ]
+}
